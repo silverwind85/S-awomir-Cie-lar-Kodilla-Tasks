@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class Trell {
+public class Trello {
     private int board;
     private int card;
 

@@ -8,6 +8,6 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class AttachemntsByType {
-    private List<Trell> trellList;
+    private List<Trello> trelloList;
 
 }
