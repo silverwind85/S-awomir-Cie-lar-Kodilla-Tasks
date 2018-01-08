@@ -28,36 +28,23 @@ public class TrelloController {
         List<TrelloBoardDto> trelloBoards = null;
 
         trelloBoards = trelloClient.getTrelloBoards();
-        List<TrelloBoardDto> list1 = trelloBoards.stream().filter(a -> a.getClass().getDeclaredFields().length == 2).collect(Collectors.toList());
-        List<TrelloBoardDto> list2 = new ArrayList<>();
-        for (TrelloBoardDto trelloBoardDto : list1
-                ) {
-            try {
-                if (trelloBoardDto.getClass().getDeclaredField("id").equals("id")
-                        && trelloBoardDto.getClass().getDeclaredField("name").equals("name")) ;
-                list2.add(trelloBoardDto);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-            return list2.stream().filter(a -> a.getName().contains("Kodilla")).collect(Collectors.toList());
-        }
-        return list2;
+        return trelloBoards.stream().filter(a -> a.getName()!=null&&a.getId()!=null&&a.getName().contains("Kodilla")).collect(Collectors.toList());
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards2")
-    public void getTrelloBoards2(){
-        List<TrelloBoardDto> trelloBords =trelloClient.getTrelloBoards();
+    public void getTrelloBoards2() {
+        List<TrelloBoardDto> trelloBords = trelloClient.getTrelloBoards();
         trelloBords.forEach(trelloBoardDto -> {
             System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
             System.out.println("This board contain lists");
 
             trelloBoardDto.getLists().forEach(trelloList ->
-                    System.out.println(trelloList.getName() + " - "+ trelloList.getId() + " - " + trelloList.isClosed()));
+                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
         });
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
-    public CreatedTrelloCard cratedTrelloCard(@RequestBody TrelloCardDto trelloCardDto)
-    {
+    public CreatedTrelloCard cratedTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloClient.createdNewCard(trelloCardDto);
     }
 }

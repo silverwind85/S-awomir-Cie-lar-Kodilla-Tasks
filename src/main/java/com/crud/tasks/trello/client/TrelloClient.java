@@ -37,13 +37,9 @@ public class TrelloClient {
 
         TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
 
-        Optional<TrelloBoardDto[]> optionalBoardsResponse = Optional.of(boardsResponse);
-        try {
-            return Arrays.asList(optionalBoardsResponse.orElseThrow(TrelloNotFoundException::new));
-        } catch (TrelloNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
+            return Arrays.asList(Optional.ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
+
+
     }
 
     private URI getUrl() {
