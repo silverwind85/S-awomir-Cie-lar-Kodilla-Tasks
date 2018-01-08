@@ -8,12 +8,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Trello {
+public class AttachmentsByType {
 
-    @JsonProperty("board")
-    private int board;
-
-    @JsonProperty("card")
-    private int card;
+    @JsonProperty("trello")
+    private Trello trello;
 
 }

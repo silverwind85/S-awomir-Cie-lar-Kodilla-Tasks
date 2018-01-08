@@ -24,11 +24,7 @@ public class TrelloController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-
-        List<TrelloBoardDto> trelloBoards = null;
-
-        trelloBoards = trelloClient.getTrelloBoards();
-        return trelloBoards.stream().filter(a -> a.getName()!=null&&a.getId()!=null&&a.getName().contains("Kodilla")).collect(Collectors.toList());
+        return trelloClient.getTrelloBoards().stream().filter(a -> a.getName()!=null&&a.getId()!=null&&a.getName().contains("Kodilla")).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards2")
