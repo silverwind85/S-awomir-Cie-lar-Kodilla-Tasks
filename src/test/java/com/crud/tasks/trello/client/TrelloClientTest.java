@@ -88,7 +88,9 @@ public class TrelloClientTest {
         when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
         //when
         List<TrelloBoardDto> fetchTrelloBoards = trelloClient.getTrelloBoards();
+
         //Then
-        Assert.assertEquals(new ArrayList<>(), fetchTrelloBoards);
+        Assert.assertTrue( fetchTrelloBoards.isEmpty());
+
     }
 }
