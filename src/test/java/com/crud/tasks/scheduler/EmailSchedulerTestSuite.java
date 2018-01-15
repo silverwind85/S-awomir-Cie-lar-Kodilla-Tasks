@@ -21,7 +21,8 @@ public class EmailSchedulerTestSuite {
     @Mock
     private TaskRepository taskRepository;
 
-    @InjectMocks
+
+    @Mock
     private EmailScheduler emailScheduler;
 
     @Test

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class EmailScheduler {
 
     private final static String SUBJECT = "Task: Once a day email";
-    private String plura;
 
     @Autowired
     private SimpleEmailService simpleEmailService;
@@ -26,9 +25,10 @@ public class EmailScheduler {
     /*@Scheduled(cron = "0 0 10 * * *")*/
     @Scheduled(fixedDelay = 10000)
     public Mail sendInformationEmail() {
+        String plural;
         long size = taskRepository.count();
-        plura = (taskRepository.count() > 1) ? "tasks" : "task";
-        Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, "Currently in database you got: " + size + " " +plura, "slcieslar@gmail.com");
+        plural = (taskRepository.count() > 1) ? "tasks" : "task";
+        Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, "Currently in database you got: " + size + " " +plural, "slcieslar@gmail.com");
         simpleEmailService.send(mail);
 
         return mail;
