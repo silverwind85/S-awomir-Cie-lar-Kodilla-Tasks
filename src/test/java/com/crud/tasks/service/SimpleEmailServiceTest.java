@@ -43,7 +43,7 @@ public class SimpleEmailServiceTest {
         //Give
         Mail mail = new Mail("test@test.com","Test","Test Messagee","");
         //When
-        SimpleMailMessage mailMessage =simpleEmailService.createMailMessage(mail);
+        SimpleMailMessage mailMessage = simpleEmailService.createMailMessage(mail);
         //Then
         Assert.assertEquals(mailMessage.getCc(),null);
         Assert.assertEquals(mailMessage.getSubject(),"Test");
