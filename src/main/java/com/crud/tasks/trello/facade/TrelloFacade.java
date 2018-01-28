@@ -33,8 +33,8 @@ public class TrelloFacade {
         return trelloMapper.mapToBoardDtos(filteredBoards);
     }
     public CreatedTrelloCardDto createCard(final TrelloCardDto trelloCardDto){
-        TrelloCard trelloCard = trelloMapper.maptoCard(trelloCardDto);
+        TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
         trelloValidator.validateCard(trelloCard);
-        return trelloService.createdTrelloCard(trelloMapper.maptoCardDto(trelloCard));
+        return trelloService.createdTrelloCard(trelloMapper.mapToCardDto(trelloCard));
     }
 }

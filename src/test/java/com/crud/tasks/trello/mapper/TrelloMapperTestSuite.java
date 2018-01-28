@@ -90,7 +90,7 @@ public class TrelloMapperTestSuite {
                 "top",
                 "eee222");
         //When
-        TrelloCardDto result = trelloMapper.maptoCardDto(trelloCard);
+        TrelloCardDto result = trelloMapper.mapToCardDto(trelloCard);
         //Then
         Assert.assertEquals("What to do yesterday",result.getName());
         Assert.assertEquals("May be I will go snowboard",result.getDescription());
@@ -106,7 +106,7 @@ public class TrelloMapperTestSuite {
                 "top",
                 "eee222");
         //When
-        TrelloCard result = trelloMapper.maptoCard(trelloCardDto);
+        TrelloCard result = trelloMapper.mapToCard(trelloCardDto);
         //Then
         Assert.assertEquals("What to do yesterday",result.getName());
         Assert.assertEquals("May be I will go snowboard",result.getDescription());
