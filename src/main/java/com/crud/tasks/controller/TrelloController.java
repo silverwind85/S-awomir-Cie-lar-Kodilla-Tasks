@@ -20,8 +20,14 @@ public class TrelloController {
     @Autowired
     private TrelloFacade trelloFacade;
 
+
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloFacade.fetchTrelloBoards();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards3")
+    public List<TrelloBoardDto> getTrelloBoards3() {
         return trelloFacade.fetchTrelloBoards().stream().filter(a -> a.getName()!=null&&a.getId()!=null&&a.getName().contains("Kodilla")).collect(Collectors.toList());
     }
 
