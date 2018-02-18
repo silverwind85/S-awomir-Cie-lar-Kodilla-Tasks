@@ -111,6 +111,7 @@ public class TrelloFacedTestSuite {
         assertEquals("desc_test",createdTrelloCardDto1.getDescription());
         assertEquals("http://test.com",createdTrelloCardDto1.getShortUrl());
 
+
     }
 
 }
