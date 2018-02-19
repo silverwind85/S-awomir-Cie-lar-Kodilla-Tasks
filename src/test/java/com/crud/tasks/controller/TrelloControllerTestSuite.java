@@ -2,12 +2,14 @@ package com.crud.tasks.controller;
 
 
 import com.crud.tasks.domain.*;
+import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.facade.TrelloFacade;
 import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatcher;
 import org.mockito.ArgumentMatchers;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -36,6 +38,9 @@ public class TrelloControllerTestSuite {
 
     @MockBean
     private TrelloFacade trelloFacade;
+
+    @Mock
+    private TrelloService trelloService;
 
     @Test
     public void shouldFetchEmptyTrelloBoards() throws Exception{
