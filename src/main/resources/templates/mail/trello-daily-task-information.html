@@ -95,13 +95,15 @@
                             <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-                                        <p th:if="${is_friend}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Yo <span th:text="${admin_config.getAdminName()}"></span>,</p>
-                                        <p th:unless="${is_friend}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Dear <span th:text="${admin_name}"></span>,</p>
-                                        <p th:text="${message}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"></p>
+
+                                        <p th:if="${is_friend}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Dear <span th:text="${admin_name}"></span>,</p>
+                                        <span th:text="${message}"   style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"></span><span th:text="${number_of_tasks}"></span>
+                                        <span th:if="${number_of_tasks}>0" : th:text="tasks" ? th:texr="task"></span>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                                             <tbody>
                                             <tr>
                                                 <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
+
                                                     <table th:if="${show_button}" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                                                         <tbody>
                                                         <tr>
@@ -114,10 +116,10 @@
                                             </tbody>
                                         </table>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            Application functionality:
+                                            Tasks today:
                                         </p>
-                                        <ul th:each="function : ${application_functionality}">
-                                            <li th:text="${function}"></li>
+                                        <ul th:each="taks : ${tasks}">
+                                            <li th:text="${taks.getTitle()}"></li>
                                         </ul>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Best regards <span th:text="${team}"></span></p>
                                     </td>

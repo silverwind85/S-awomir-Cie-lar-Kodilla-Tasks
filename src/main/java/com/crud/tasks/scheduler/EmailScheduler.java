@@ -28,10 +28,18 @@ public class EmailScheduler {
         long size = taskRepository.count();
         plural = (taskRepository.count() > 1) ? "tasks" : "task";
         Mail mail = new Mail(adminConfig.getAdminMail(), SUBJECT, "Currently in database you got: " + size + " " +plural, "slcieslar@gmail.com");
-        simpleEmailService.send(mail);
+        /*simpleEmailService.send(mail);*/
 
         return mail;
     }
+    @Scheduled(cron ="0 0 10 * * *")
+    /*@Scheduled(fixedDelay = 10000)*/
+    public Mail sendInformationEmailThymeleaf(){
+        Mail mail =new Mail(adminConfig.getAdminMail(),SUBJECT,"Currently in database you got: ","slcieslar@gmail.com");
+        simpleEmailService.send(mail,"mail/trello-daily-task-information");
+        return mail;
+    }
+
 }
 
 

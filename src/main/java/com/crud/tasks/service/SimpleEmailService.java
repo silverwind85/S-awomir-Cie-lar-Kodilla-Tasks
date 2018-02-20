@@ -23,22 +23,22 @@ public class SimpleEmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void send(final Mail mail) {
+    public void send(final Mail mail,String template) {
         try {
             SimpleMailMessage mailMessage = createMailMessage(mail);
             LOGGER.info("Email has been sent");
-            javaMailSender.send(createMimeMessage(mail));
+            javaMailSender.send(createMimeMessage(mail,template));
         } catch (MailException e) {
             LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
             e.printStackTrace();
         }
     }
-    private MimeMessagePreparator createMimeMessage(final  Mail mail){
+    private MimeMessagePreparator createMimeMessage(final  Mail mail,String template){
         return mimeMessage -> {
             MimeMessageHelper messageHelper =new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()),true);
+            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage(),template),true);
         };
     }
 
