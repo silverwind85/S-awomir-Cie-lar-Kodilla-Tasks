@@ -41,6 +41,16 @@ public class SimpleEmailService {
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage(),template),true);
         };
     }
+    public void sendSimple(final Mail mail) {
+        try {
+            SimpleMailMessage mailMessage = createMailMessage(mail);
+            LOGGER.info("Email has been sent");
+            javaMailSender.send(mailMessage);
+        } catch (MailException e) {
+            LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
+            e.printStackTrace();
+        }
+    }
 
     public SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
